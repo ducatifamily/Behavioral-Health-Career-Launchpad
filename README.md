@@ -24,8 +24,8 @@ Static GitHub/Render site revised from the original Behavioral Health Careers La
 - `styles.css`
 - `app.js`
 - `render.yaml`
-- `assets/wredi-logo.png`
-- `assets/nbhp-logo.png`
+- `wredi-logo.png`
+- `nbhp-logo.png`
 
 ## Deploy on Render
 
@@ -53,3 +53,7 @@ Comparison data link directly to the current U.S. Bureau of Labor Statistics Occ
 
 ### Neutrality
 The site deliberately presents Avicenna/AAHI as options among many community resources rather than as the default pathway.
+
+
+## Logo path fix
+The two PNG logo files are intentionally stored in the repository root beside `index.html`. This avoids missing-folder issues when files are uploaded to GitHub manually.
