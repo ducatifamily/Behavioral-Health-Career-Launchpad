@@ -2,4 +2,5 @@ services:
   - type: web
     name: behavioral-health-careers-launchpad
     runtime: static
+    buildCommand: ""
     staticPublishPath: .

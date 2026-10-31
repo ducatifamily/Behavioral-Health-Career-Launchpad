@@ -1,245 +1,560 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Behavioral Health Careers Launchpad</title>
-  <meta name="description" content="Explore behavioral health career pathways, discover your fit, and build a next-step plan." />
-  <style>
-    :root{
-      --navy:#073f70;
-      --navy2:#082f57;
-      --teal:#20aaa8;
-      --teal-dark:#087f82;
-      --lime:#a9cd39;
-      --sky:#eefafa;
-      --ink:#12304a;
-      --muted:#557086;
-      --white:#fff;
-      --line:#d9eaee;
-      --shadow:0 12px 30px rgba(5,49,84,.12);
-      --radius:20px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.55}
-    a{color:inherit}
-    .wrap{width:min(1120px,92vw);margin:auto}
-    .topbar{position:sticky;top:0;z-index:20;background:rgba(6,53,93,.96);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,.12)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0;color:#fff}
-    .brand{font-weight:900;letter-spacing:.2px;white-space:nowrap}
-    .navlinks{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
-    .navlinks a{font-size:.92rem;text-decoration:none;padding:8px 11px;border-radius:999px;color:#dff8f7}
-    .navlinks a:hover,.navlinks a:focus{background:#ffffff18;color:#fff;outline:none}
-    .hero{background:linear-gradient(135deg,var(--navy2),var(--navy));padding:24px 0 0}
-    .hero img{width:100%;display:block;border-radius:20px 20px 0 0;box-shadow:var(--shadow)}
-    .hero-copy{background:linear-gradient(180deg,#f1ffff,#fff);padding:30px 0 52px;border-bottom:1px solid var(--line)}
-    .eyebrow{display:inline-block;color:var(--teal-dark);font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;margin-bottom:8px}
-    h1,h2,h3{line-height:1.12;margin:0}
-    h1{font-size:clamp(2rem,5vw,4.1rem);color:var(--navy)}
-    h2{font-size:clamp(1.65rem,3vw,2.45rem);color:var(--navy)}
-    h3{font-size:1.18rem;color:var(--navy)}
-    .lead{font-size:1.12rem;color:var(--muted);max-width:820px;margin:14px 0 0}
-    .note{margin-top:18px;padding:14px 16px;border-left:5px solid var(--lime);background:#f6fbeb;border-radius:10px;color:#355164}
-    section{padding:70px 0}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}
-    .section-head p{max-width:700px;color:var(--muted);margin:8px 0 0}
-    .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .pillar{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}
-    .pillar::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:var(--teal)}
-    .pillar:nth-child(2)::before,.pillar:nth-child(4)::before{background:var(--lime)}
-    .pillar .icon{font-size:2rem;margin-bottom:12px}
-    .pillar p{color:var(--muted);margin:9px 0 0}
-    .pathways{background:var(--sky)}
-    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    details.card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(8,63,112,.08);overflow:hidden}
-    details.card[open]{box-shadow:var(--shadow)}
-    details.card summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
-    details.card summary::-webkit-details-marker{display:none}
-    .badge{flex:0 0 auto;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--teal),#6fd4ce);color:#fff;font-size:1.3rem;font-weight:900}
-    .card:nth-child(3n) .badge{background:linear-gradient(135deg,var(--lime),#d4e86b);color:var(--navy)}
-    .summary-text{flex:1}
-    .summary-text p{color:var(--muted);margin:6px 0 0;font-size:.96rem}
-    .chev{font-size:1.3rem;color:var(--teal-dark);transition:.2s transform}
-    details[open] .chev{transform:rotate(45deg)}
-    .card-body{padding:0 24px 24px;border-top:1px solid var(--line)}
-    .card-body p{margin:16px 0 0}
-    .career-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-    .career-actions .btn{font-size:.92rem}
-    .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-    .fact{padding:14px;border-radius:12px;background:#f7fbfc;border:1px solid #e1eef0}
-    .fact strong{display:block;color:var(--navy);margin-bottom:4px}
-    .fit{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff}
-    .fit h2,.fit h3{color:#fff}
-    .fit .section-head p{color:#d4edf3}
-    .fit-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px}
-    .quizbox,.resultbox{background:#fff;color:var(--ink);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
-    .q{padding:15px 0;border-bottom:1px solid var(--line)}
-    .q:last-child{border-bottom:0}
-    .q label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
-    input[type="checkbox"]{margin-top:4px;accent-color:var(--teal-dark);width:18px;height:18px}
-    .btn{appearance:none;border:0;border-radius:12px;padding:12px 17px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block}
-    .btn-primary{background:var(--lime);color:var(--navy2)}
-    .btn-secondary{background:var(--teal);color:#fff}
-    .btn-ghost{background:#eaf5f6;color:var(--navy)}
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    .matches{display:grid;gap:10px;margin-top:14px}
-    .match{padding:14px;border-radius:12px;background:#f5fbfb;border:1px solid var(--line)}
-    .match strong{color:var(--navy)}
-    .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .step{padding:24px;border-radius:18px;border:1px solid var(--line);background:#fff;box-shadow:0 8px 24px rgba(8,63,112,.08)}
-    .stepnum{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font-weight:900;margin-bottom:14px}
-    textarea{width:100%;min-height:95px;border:1px solid #bfd8dc;border-radius:12px;padding:12px;font:inherit;resize:vertical;background:#fbfefe}
-    .resources{background:#f7fbfc}
-    .resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .resource{padding:26px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(8,63,112,.08)}
-    .resource p{color:var(--muted)}
-    footer{background:var(--navy2);color:#d8edf3;padding:30px 0;text-align:center;font-size:.92rem}
-    .tiny{font-size:.82rem;color:#6a8193;margin-top:10px}
-    @media(max-width:900px){.pillars{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.fit-grid{grid-template-columns:1fr}.plan-grid{grid-template-columns:1fr}.resource-grid{grid-template-columns:1fr}.nav{align-items:flex-start}.navlinks{display:none}}
-    @media(max-width:560px){.pillars{grid-template-columns:1fr}.facts{grid-template-columns:1fr}section{padding:50px 0}.hero{padding-top:12px}.hero img{border-radius:12px 12px 0 0}}
-    @media print{.topbar,.fit,.resources,.actions{display:none!important}body{background:#fff}.hero img{max-height:260px;object-fit:cover}.step{box-shadow:none}}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NBHP and WREDI Behavioral Health Careers Launchpad: explore behavioral health careers, training, education, and employment opportunities in Greater Houston and Texas.">
+  <title>Behavioral Health Careers Launchpad | NBHP + WREDI</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap nav">
-      <div class="brand">WREDI • Behavioral Health Careers</div>
-      <nav class="navlinks" aria-label="Primary navigation">
-        <a href="#explore">Explore</a>
-        <a href="#pathways">Career Pathways</a>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Behavioral Health Careers Launchpad home">
+        <img src="assets/wredi-logo.png" alt="WREDI to Launch Behavioral Health Careers">
+        <div class="brand-copy">
+          <strong>Behavioral Health Careers Launchpad</strong>
+          <span>An NBHP + WREDI community resource</span>
+        </div>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#pathways">Careers</a>
+        <a href="#compare">Compare</a>
+        <a href="#education">Education & Training</a>
+        <a href="#opportunities">Jobs</a>
         <a href="#fit">Find Your Fit</a>
-        <a href="#plan">Plan Your Future</a>
-        <a href="#resources">Resources</a>
+        <a href="#plan">Plan</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <div class="hero">
-      <div class="wrap"><img src="launchpad-hero.png" alt="Behavioral Health Careers Launchpad: Explore Careers, Support Recovery, Strengthen Communities, Plan Your Future" /></div>
-    </div>
-    <div class="hero-copy">
-      <div class="wrap">
-        <span class="eyebrow">Career exploration hub</span>
-        <h1>Find a behavioral health career that fits you.</h1>
-        <p class="lead">Explore roles, compare the kind of work each pathway involves, discover where your interests may fit, and leave with a practical next step. This is a career launchpad—not a class, gradebook, or required sequence.</p>
-        <div class="note"><strong>Start anywhere.</strong> Browse a pathway, try the interest matcher, or build a next-step plan. You can return to any section at any time.</div>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <span class="eyebrow">A Greater Houston behavioral health workforce resource</span>
+        <h1>Launch your future in behavioral health.</h1>
+        <p class="hero-lead">Explore meaningful careers, compare pathways, find education and training options, connect with local employers, and choose a next step that fits your goals.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#pathways">Explore career pathways</a>
+          <a class="button secondary" href="#opportunities">Find local opportunities</a>
+        </div>
+        <p class="hero-note">Start where you are. Some behavioral health careers can be entry points into the field. Others require college, graduate education, supervised experience, certification, or licensure.</p>
       </div>
-    </div>
-
-    <section id="explore">
-      <div class="wrap">
-        <div class="section-head"><div><span class="eyebrow">Four ways to launch your impact</span><h2>What brings you here?</h2><p>Use these themes to orient your exploration. You may connect with more than one.</p></div></div>
-        <div class="pillars">
-          <article class="pillar"><div class="icon">⌕</div><h3>Explore Careers</h3><p>Discover meaningful roles, daily responsibilities, work settings, and pathways into behavioral health.</p></article>
-          <article class="pillar"><div class="icon">♥</div><h3>Support Recovery</h3><p>Explore roles centered on hope, recovery, peer support, counseling, and helping people move toward their goals.</p></article>
-          <article class="pillar"><div class="icon">⌂</div><h3>Strengthen Communities</h3><p>Learn about outreach, resource navigation, case management, education, advocacy, and community connection.</p></article>
-          <article class="pillar"><div class="icon">↗</div><h3>Plan Your Future</h3><p>Turn what you learn into a concrete next step: skills to build, requirements to verify, and opportunities to pursue.</p></article>
+      <div class="hero-visual" aria-label="WREDI and NBHP">
+        <img class="hero-wredi" src="assets/wredi-logo.png" alt="WREDI: Workforce Recruitment Education and Development Initiative">
+        <div class="parent-org">
+          <span>Powered by</span>
+          <img src="assets/nbhp-logo.png" alt="Network of Behavioral Health Providers">
         </div>
       </div>
     </section>
 
-    <section id="pathways" class="pathways">
-      <div class="wrap">
-        <div class="section-head"><div><span class="eyebrow">Career pathways</span><h2>Explore seven directions</h2><p>These pathway summaries were adapted from the original Behavioral Health Careers Canvas content. Open any card to see what the role emphasizes and what to explore next.</p></div></div>
-        <div class="cards">
-          <details class="card"><summary><div class="badge">CHW</div><div class="summary-text"><h3>Community Health Worker</h3><p>Outreach, health education, referrals, advocacy, trust-building, and resource navigation.</p></div><div class="chev">+</div></summary><div class="card-body"><p>Community Health Workers help individuals and families understand health information, locate services, reduce barriers, connect with community resources, and communicate with healthcare and social-service organizations.</p><div class="facts"><div class="fact"><strong>You may enjoy this if…</strong>You like connecting people to practical help and building trust in communities.</div><div class="fact"><strong>Explore next</strong>Employer expectations, local CHW training/credential options, community agencies, and outreach roles.</div></div><div class="career-actions"><a class="btn btn-secondary" href="https://share.articulate.com/drAySs-yWoiatnr7PNZO4" target="_blank" rel="noopener">Explore the CHW Career Lesson ↗</a></div></div></details>
-
-          <details class="card"><summary><div class="badge">MH</div><div class="summary-text"><h3>Mental Health Peer Specialist</h3><p>Recovery, hope, self-determination, strengths, advocacy, and professional peer support.</p></div><div class="chev">+</div></summary><div class="card-body"><p>Mental Health Peer Specialists use qualifying lived experience with mental health recovery in a trained, intentional, and professional way to support others, encourage self-advocacy, connect people with resources, and reinforce hope.</p><div class="facts"><div class="fact"><strong>You may enjoy this if…</strong>You value recovery-oriented support and helping others recognize their own strengths and choices.</div><div class="fact"><strong>Explore next</strong>Current peer-specialist training, certification, lived-experience eligibility, supervision, and employer requirements.</div></div><div class="career-actions"><a class="btn btn-secondary" href="https://share.articulate.com/oKTHuBRuuEXxt7y_i3QEk" target="_blank" rel="noopener">Explore the Peer Specialist Career Lesson ↗</a></div></div></details>
-
-          <details class="card"><summary><div class="badge">RS</div><div class="summary-text"><h3>Recovery Support Peer Specialist</h3><p>Substance use recovery support, hope, lived experience, community connection, and recovery planning.</p></div><div class="chev">+</div></summary><div class="card-body"><p>Recovery Support Peer Specialists use qualifying lived experience with substance use recovery to support people working toward recovery and wellness while emphasizing hope, personal choice, self-advocacy, and multiple pathways to recovery.</p><div class="facts"><div class="fact"><strong>You may enjoy this if…</strong>You want to use recovery experience in a professional support role without taking over another person’s decisions.</div><div class="fact"><strong>Explore next</strong>Current peer-recovery credential requirements, training providers, recovery organizations, and supervised work settings.</div></div><div class="career-actions"><a class="btn btn-secondary" href="https://share.articulate.com/r5VXHMpcnHdXB30cSjGLb" target="_blank" rel="noopener">Explore the Recovery Support Career Lesson ↗</a></div></div></details>
-
-          <details class="card"><summary><div class="badge">LCDC</div><div class="summary-text"><h3>Substance Use Counselor — LCDC</h3><p>Assessment, treatment planning, counseling, ethics, documentation, case management, and clinical practice.</p></div><div class="chev">+</div></summary><div class="card-body"><p>The original course distinguishes this pathway from peer support: an LCDC works in a clinical substance-use counseling role and may participate in intake, assessment, treatment planning, individual or group counseling, education, documentation, and care coordination.</p><div class="facts"><div class="fact"><strong>You may enjoy this if…</strong>You are drawn to structured clinical counseling, treatment planning, and professional documentation.</div><div class="fact"><strong>Explore next</strong>Current Texas education, practicum, examination, licensure, and supervised-experience requirements.</div></div><div class="career-actions"><a class="btn btn-secondary" href="https://share.articulate.com/Q2TPUjq-Yk0fq0FkzeFm5" target="_blank" rel="noopener">Explore the LCDC Career Lesson ↗</a></div></div></details>
-
-          <details class="card"><summary><div class="badge">PT</div><div class="summary-text"><h3>Psychiatric Technician</h3><p>Direct care, observation, safety, structured activities, documentation, and teamwork.</p></div><div class="chev">+</div></summary><div class="card-body"><p>Psychiatric Technicians provide direct, hands-on support to people receiving mental health, developmental-disability, substance use, crisis, residential, or hospital-based services.</p><div class="facts"><div class="fact"><strong>You may enjoy this if…</strong>You prefer hands-on support, structured care environments, observation, safety, and team-based work.</div><div class="fact"><strong>Explore next</strong>Local employer qualifications, direct-care experience, training expectations, shift settings, and advancement options.</div></div><div class="career-actions"><a class="btn btn-secondary" href="https://share.articulate.com/6bDK2DoJ7Zx8xNh1ri0ex" target="_blank" rel="noopener">Explore the Psychiatric Technician Career Lesson ↗</a></div></div></details>
-
-          <details class="card"><summary><div class="badge">QMHP</div><div class="summary-text"><h3>Qualified Mental Health Professional — QMHP</h3><p>Case management, skills training, rehabilitation, crisis support, care coordination, and documentation.</p></div><div class="chev">+</div></summary><div class="card-body"><p>QMHPs commonly support people through behavioral health rehabilitation, skills training, case management, care coordination, crisis support, advocacy, documentation, and community resource navigation.</p><div class="facts"><div class="fact"><strong>You may enjoy this if…</strong>You like coordinating services, teaching skills, solving complex practical problems, and documenting care.</div><div class="fact"><strong>Explore next</strong>Current degree and employer requirements, qualifying fields of study, supervision expectations, and local behavioral-health providers.</div></div><div class="career-actions"><a class="btn btn-secondary" href="https://share.articulate.com/OcxXJfro99hvlbobZ4ax_" target="_blank" rel="noopener">Explore the QMHP Career Lesson ↗</a></div></div></details>
-
-          <details class="card"><summary><div class="badge">BHT</div><div class="summary-text"><h3>Behavioral Health Technician</h3><p>Direct support, observation, documentation, safety, ethics, communication, and team-based care.</p></div><div class="chev">+</div></summary><div class="card-body"><p>Behavioral Health Technicians provide direct support to people receiving mental health, substance use, residential, crisis, or community-based services and work as part of a larger provider team.</p><div class="facts"><div class="fact"><strong>You may enjoy this if…</strong>You want an entry point into behavioral health with direct client support and close teamwork.</div><div class="fact"><strong>Explore next</strong>Entry-level employer requirements, population and setting preferences, safety training, documentation skills, training options, and career ladders.</div></div><div class="career-actions"><a class="btn btn-secondary" href="https://share.articulate.com/VxvuOWtoZKNyyNhevLQPX" target="_blank" rel="noopener">Explore the BHT Career Lesson ↗</a><a class="btn btn-primary" href="https://avicennaallied.org/behavioral-health-technician/" target="_blank" rel="noopener">Explore AAHI's BHT Certificate ↗</a></div></div></details>
-        </div>
+    <section class="section shortage-section" id="need">
+      <div class="section-heading compact">
+        <span class="eyebrow">Why this work matters</span>
+        <h2>Behavioral health careers are in demand.</h2>
+        <p>WREDI was created to help strengthen the behavioral health workforce in Greater Houston by increasing awareness, experience, education, and pathways into the field.</p>
       </div>
+      <div class="stats-grid">
+        <article class="stat-card">
+          <strong>99%</strong>
+          <span>of Texas counties are federally designated Mental Health Professional Shortage Areas.</span>
+        </article>
+        <article class="stat-card">
+          <strong>1 : 980</strong>
+          <span>mental health provider-to-resident ratio reported for Harris, Fort Bend, and Montgomery counties.</span>
+        </article>
+        <article class="stat-card">
+          <strong>Many paths</strong>
+          <span>from entry-level support roles to licensed clinical and advanced professional careers.</span>
+        </article>
+      </div>
+      <p class="source-note">Workforce shortage figures: <a href="https://www.nbhp.org/wredi.html" target="_blank" rel="noopener">NBHP Workforce Development (WREDI) ↗</a></p>
     </section>
 
-    <section id="fit" class="fit">
-      <div class="wrap">
-        <div class="section-head"><div><span class="eyebrow" style="color:#bfe9e8">Quick career matcher</span><h2>What kind of work sounds most like you?</h2><p>This is an exploration tool—not a test. Choose every statement that feels true, then see which pathways rise to the top.</p></div></div>
-        <div class="fit-grid">
-          <div class="quizbox" id="quizbox">
-            <div class="q"><label><input type="checkbox" data-tags="chw,qmhp"><span>I like helping people find services, solve practical barriers, and connect with community resources.</span></label></div>
-            <div class="q"><label><input type="checkbox" data-tags="mh,rs"><span>I am interested in recovery-oriented work built around hope, self-determination, and peer support.</span></label></div>
-            <div class="q"><label><input type="checkbox" data-tags="lcdc"><span>I am interested in clinical counseling, assessment, treatment planning, and documentation.</span></label></div>
-            <div class="q"><label><input type="checkbox" data-tags="pt,bht"><span>I prefer direct, hands-on support in structured care settings.</span></label></div>
-            <div class="q"><label><input type="checkbox" data-tags="qmhp,chw"><span>I enjoy coordinating services, teaching skills, tracking progress, and communicating across systems.</span></label></div>
-            <div class="q"><label><input type="checkbox" data-tags="bht,pt"><span>I want a role where teamwork, observation, safety, and day-to-day support are central.</span></label></div>
-            <div class="q"><label><input type="checkbox" data-tags="mh,rs,chw"><span>I am energized by advocacy, strengths-based support, and helping people navigate next steps.</span></label></div>
-            <div class="actions"><button class="btn btn-primary" id="matchBtn" type="button">Show my matches</button><button class="btn btn-ghost" id="resetBtn" type="button">Reset</button></div>
+    <section class="section intro-band">
+      <div>
+        <span class="eyebrow">Start anywhere</span>
+        <h2>There is more than one way into behavioral health.</h2>
+      </div>
+      <p>The careers highlighted below are <strong>not the only careers in behavioral health</strong>. They represent several high-demand pathways in our region. For some people, an entry-level or certification pathway becomes a lifelong career. For others, it is a way to learn what client-facing work is like before investing in a degree or advanced licensure.</p>
+    </section>
+
+    <section class="section" id="pathways">
+      <div class="section-heading">
+        <span class="eyebrow">Career pathways</span>
+        <h2>Explore seven directions.</h2>
+        <p>Open a pathway to learn what the work emphasizes, who may enjoy it, and what to explore next.</p>
+      </div>
+
+      <div class="career-grid">
+        <details class="career-card">
+          <summary><span class="career-code">CHW</span><span><strong>Community Health Worker</strong><small>Outreach • education • referrals • advocacy • navigation</small></span><span class="plus">+</span></summary>
+          <div class="career-body">
+            <p>Community Health Workers help individuals and families understand health information, locate services, reduce barriers, connect with resources, and communicate with healthcare and social-service organizations.</p>
+            <p><strong>You may enjoy this if:</strong> You like connecting people to practical help and building trust in communities.</p>
+            <div class="career-links">
+              <a href="https://share.articulate.com/drAySs-yWoiatnr7PNZO4" target="_blank" rel="noopener">Explore the CHW career lesson ↗</a>
+              <a href="https://www.dshs.texas.gov/community-health-worker/becoming-a-community-health-worker" target="_blank" rel="noopener">Texas CHW certification ↗</a>
+            </div>
           </div>
-          <aside class="resultbox" aria-live="polite">
-            <h3>Your pathway matches</h3>
-            <p id="resultIntro">Choose a few statements and select <strong>Show my matches</strong>.</p>
-            <div class="matches" id="matches"></div>
-            <p class="tiny">A strong match means the role shares themes you selected. It does not determine eligibility, certification, or job fit.</p>
-          </aside>
+        </details>
+
+        <details class="career-card">
+          <summary><span class="career-code">MH</span><span><strong>Mental Health Peer Specialist</strong><small>Recovery • hope • strengths • advocacy • peer support</small></span><span class="plus">+</span></summary>
+          <div class="career-body">
+            <p>Mental Health Peer Specialists use qualifying lived experience with mental health recovery in a trained and professional way to support others, encourage self-advocacy, connect people with resources, and reinforce hope.</p>
+            <p><strong>You may enjoy this if:</strong> You value recovery-oriented support and helping others recognize their own strengths and choices.</p>
+            <div class="career-links">
+              <a href="https://share.articulate.com/oKTHuBRuuEXxt7y_i3QEk" target="_blank" rel="noopener">Explore the peer specialist career lesson ↗</a>
+              <a href="https://www.tcbap.org/page/certification" target="_blank" rel="noopener">Texas Certification Board ↗</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="career-card">
+          <summary><span class="career-code">RS</span><span><strong>Recovery Support Peer Specialist</strong><small>Substance-use recovery • lived experience • recovery planning</small></span><span class="plus">+</span></summary>
+          <div class="career-body">
+            <p>Recovery Support Peer Specialists use qualifying lived experience with substance-use recovery to support people working toward recovery and wellness while emphasizing hope, personal choice, and multiple pathways to recovery.</p>
+            <p><strong>You may enjoy this if:</strong> You want to use recovery experience in a professional support role.</p>
+            <div class="career-links">
+              <a href="https://share.articulate.com/r5VXHMpcnHdXB30cSjGLb" target="_blank" rel="noopener">Explore the recovery support career lesson ↗</a>
+              <a href="https://www.tcbap.org/page/certification" target="_blank" rel="noopener">Texas Certification Board ↗</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="career-card">
+          <summary><span class="career-code">LCDC</span><span><strong>Substance Use Counselor — LCDC</strong><small>Assessment • counseling • treatment planning • documentation</small></span><span class="plus">+</span></summary>
+          <div class="career-body">
+            <p>LCDC work is a clinical substance-use counseling pathway that may include intake, assessment, treatment planning, counseling, education, documentation, and care coordination.</p>
+            <p><strong>You may enjoy this if:</strong> You are drawn to structured clinical counseling, treatment planning, and professional documentation.</p>
+            <div class="career-links">
+              <a href="https://share.articulate.com/Q2TPUjq-Yk0fq0FkzeFm5" target="_blank" rel="noopener">Explore the LCDC career lesson ↗</a>
+              <a href="https://www.hhs.texas.gov/providers/behavioral-health-services-providers/licensed-chemical-dependency-counselor-program" target="_blank" rel="noopener">Texas LCDC program ↗</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="career-card">
+          <summary><span class="career-code">PT</span><span><strong>Psychiatric Technician</strong><small>Direct care • observation • safety • documentation • teamwork</small></span><span class="plus">+</span></summary>
+          <div class="career-body">
+            <p>Psychiatric Technicians provide hands-on support to people receiving mental health, developmental-disability, substance-use, crisis, residential, or hospital-based services.</p>
+            <p><strong>You may enjoy this if:</strong> You prefer direct care, structured environments, observation, safety, and team-based work.</p>
+            <div class="career-links"><a href="https://share.articulate.com/6bDK2DoJ7Zx8xNh1ri0ex" target="_blank" rel="noopener">Explore the psychiatric technician career lesson ↗</a></div>
+          </div>
+        </details>
+
+        <details class="career-card">
+          <summary><span class="career-code">QMHP</span><span><strong>Qualified Mental Health Professional — QMHP</strong><small>Case management • skills training • care coordination • crisis support</small></span><span class="plus">+</span></summary>
+          <div class="career-body">
+            <p>QMHPs commonly support people through behavioral health rehabilitation, skills training, case management, crisis support, advocacy, documentation, and community resource navigation.</p>
+            <p><strong>You may enjoy this if:</strong> You like coordinating services, teaching skills, solving practical problems, and documenting care.</p>
+            <div class="career-links"><a href="https://share.articulate.com/OcxXJfro99hvlbobZ4ax_" target="_blank" rel="noopener">Explore the QMHP career lesson ↗</a></div>
+          </div>
+        </details>
+
+        <details class="career-card">
+          <summary><span class="career-code">BHT</span><span><strong>Behavioral Health Technician</strong><small>Direct support • observation • safety • communication • teamwork</small></span><span class="plus">+</span></summary>
+          <div class="career-body">
+            <p>Behavioral Health Technicians provide direct support to people receiving mental health, substance-use, residential, crisis, or community-based services as part of a larger provider team.</p>
+            <p><strong>You may enjoy this if:</strong> You want an entry point into behavioral health with direct client support and close teamwork.</p>
+            <div class="career-links">
+              <a href="https://share.articulate.com/VxvuOWtoZKNyyNhevLQPX" target="_blank" rel="noopener">Explore the BHT career lesson ↗</a>
+              <a href="https://avicennaallied.org/behavioral-health-technician/" target="_blank" rel="noopener">One local BHT training option: Avicenna ↗</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section advanced-section" id="advanced">
+      <div class="section-heading">
+        <span class="eyebrow">Where can this path take me?</span>
+        <h2>Explore degree and advanced professional pathways.</h2>
+        <p>You may enter behavioral health through a support role and advance over time—or go directly into a college or graduate pathway. Requirements vary by profession and license.</p>
+      </div>
+      <div class="ladder-grid">
+        <article class="ladder-card"><span class="level">Graduate / Licensure</span><h3>Licensed Professional Counselor / Therapist</h3><p>Clinical counseling, assessment, treatment planning, psychotherapy, and specialty practice.</p><a href="https://bhec.texas.gov/texas-state-board-of-examiners-of-professional-counselors/" target="_blank" rel="noopener">Texas LPC information ↗</a></article>
+        <article class="ladder-card"><span class="level">Bachelor's / Master's / Licensure</span><h3>Social Worker</h3><p>Direct services, case management, advocacy, community practice, clinical care, and systems-level work.</p><a href="https://bhec.texas.gov/texas-state-board-of-social-worker-examiners/" target="_blank" rel="noopener">Texas social work licensing ↗</a></article>
+        <article class="ladder-card"><span class="level">Graduate / Doctoral</span><h3>Psychologist</h3><p>Assessment, diagnosis, intervention, research, consultation, and specialty psychological services.</p><a href="https://bhec.texas.gov/texas-state-board-of-examiners-of-psychologists/" target="_blank" rel="noopener">Texas psychology licensing ↗</a></article>
+        <article class="ladder-card"><span class="level">Nursing + Graduate Specialty</span><h3>Psychiatric-Mental Health Nurse Practitioner</h3><p>Advanced nursing practice focused on mental health assessment, diagnosis, treatment, and medication management within scope of practice.</p><a href="https://www.bon.texas.gov/" target="_blank" rel="noopener">Texas Board of Nursing ↗</a></article>
+        <article class="ladder-card"><span class="level">Medical Degree + Residency</span><h3>Psychiatrist</h3><p>Physician pathway specializing in the diagnosis and medical treatment of mental and behavioral health conditions.</p><a href="https://www.tmb.state.tx.us/" target="_blank" rel="noopener">Texas Medical Board ↗</a></article>
+      </div>
+    </section>
+
+    <section class="section compare-section" id="compare">
+      <div class="section-heading">
+        <span class="eyebrow">Compare workforce snapshots</span>
+        <h2>See how selected pathways compare.</h2>
+        <p>These figures are national BLS medians and projections, included as a starting point. Local pay, requirements, and job titles vary. Some local behavioral health titles do not map one-to-one to a single federal occupation category.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="career-table">
+          <thead><tr><th>Career / closest BLS category</th><th>Typical entry education</th><th>2025 median pay</th><th>2025–35 growth</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Community Health Worker</td><td>High school diploma or equivalent*</td><td>$51,850</td><td>13%</td><td><a href="https://www.bls.gov/ooh/community-and-social-service/community-health-workers.htm" target="_blank" rel="noopener">BLS ↗</a></td></tr>
+            <tr><td>Psychiatric Technician</td><td>Postsecondary certificate is typical</td><td>$45,130</td><td>22%</td><td><a href="https://www.bls.gov/ooh/healthcare/psychiatric-technicians-and-aides.htm" target="_blank" rel="noopener">BLS ↗</a></td></tr>
+            <tr><td>Substance Use / Behavioral Disorder / Mental Health Counselor</td><td>Varies; mental health counseling typically requires a master's</td><td>$59,350</td><td>18%</td><td><a href="https://www.bls.gov/ooh/community-and-social-service/substance-abuse-behavioral-disorder-and-mental-health-counselors.htm" target="_blank" rel="noopener">BLS ↗</a></td></tr>
+            <tr><td>Social Worker</td><td>Bachelor's or master's; clinical practice requires master's + licensure</td><td>$61,780</td><td>6%</td><td><a href="https://www.bls.gov/ooh/community-and-social-service/social-workers.htm" target="_blank" rel="noopener">BLS ↗</a></td></tr>
+            <tr><td>Psychologist</td><td>Advanced degree; requirements vary by role</td><td>$99,110</td><td>6%</td><td><a href="https://www.bls.gov/ooh/life-physical-and-social-science/psychologists.htm" target="_blank" rel="noopener">BLS ↗</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source-note">*Texas CHWs who provide services for compensation must meet current Texas DSHS certification requirements. Always verify state and employer requirements.</p>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-heading">
+        <span class="eyebrow">Education and training</span>
+        <h2>Explore Houston-area and Texas pathways.</h2>
+        <p>This neutral starting list includes public, private, undergraduate, graduate, and professional options. Inclusion is informational and does not imply endorsement.</p>
+      </div>
+
+      <h3 class="subheading">Houston-area and regional colleges & universities</h3>
+      <div class="resource-grid universities">
+        <a class="resource-card" href="https://behavioralhealth.uth.edu/" target="_blank" rel="noopener"><strong>UTHealth Houston</strong><span>School of Behavioral Health Sciences: clinical psychology, clinical social work, cognitive and behavioral sciences.</span><b>Explore programs ↗</b></a>
+        <a class="resource-card" href="https://www.uh.edu/socialwork/" target="_blank" rel="noopener"><strong>University of Houston</strong><span>Graduate College of Social Work; also psychology and counseling-related pathways across UH.</span><b>Explore social work ↗</b></a>
+        <a class="resource-card" href="https://www.uhcl.edu/human-sciences-humanities/departments/psychological-and-behavioral-health-sciences/" target="_blank" rel="noopener"><strong>University of Houston–Clear Lake</strong><span>Psychological and behavioral health sciences, clinical psychology, counseling, behavior analysis, and related programs.</span><b>Explore programs ↗</b></a>
+        <a class="resource-card" href="https://tsu.edu/academics/colleges-and-schools/college-of-education/departments/counseling/index.php" target="_blank" rel="noopener"><strong>Texas Southern University</strong><span>Counseling, social work, psychology, and human-services pathways in Houston.</span><b>Explore counseling ↗</b></a>
+        <a class="resource-card" href="https://hc.edu/college-of-education-and-behavioral-sciences/departments/counseling/" target="_blank" rel="noopener"><strong>Houston Christian University</strong><span>Clinical mental health counseling, marriage and family therapy, human services, psychology, and related programs.</span><b>Explore programs ↗</b></a>
+        <a class="resource-card" href="https://www.pvamu.edu/bcas/departments/social-work/" target="_blank" rel="noopener"><strong>Prairie View A&M University</strong><span>Undergraduate and graduate social work pathways, including behavioral-health-focused graduate study.</span><b>Explore social work ↗</b></a>
+        <a class="resource-card" href="https://www.shsu.edu/academics/colleges/education/counselor-education/" target="_blank" rel="noopener"><strong>Sam Houston State University</strong><span>Clinical mental health counseling, counselor education, clinical psychology, and related behavioral-health pathways.</span><b>Explore counseling ↗</b></a>
+      </div>
+
+      <h3 class="subheading">Credential and training starting points</h3>
+      <div class="resource-grid">
+        <a class="resource-card" href="https://www.nbhp.org/training-opportunities.html" target="_blank" rel="noopener"><strong>NBHP Training Opportunities</strong><span>Community and member training opportunities maintained by NBHP.</span><b>Browse training ↗</b></a>
+        <a class="resource-card" href="https://www.dshs.texas.gov/community-health-worker/chw-and-instructor-training-programs" target="_blank" rel="noopener"><strong>Texas DSHS CHW Training</strong><span>Find DSHS-certified Community Health Worker training programs.</span><b>Find a program ↗</b></a>
+        <a class="resource-card" href="https://www.tcbap.org/page/certification" target="_blank" rel="noopener"><strong>Texas Certification Board</strong><span>Mental Health Peer Specialist, Recovery Support Peer Specialist, and related credentials.</span><b>View certifications ↗</b></a>
+        <a class="resource-card" href="https://www.hhs.texas.gov/providers/behavioral-health-services-providers/licensed-chemical-dependency-counselor-program" target="_blank" rel="noopener"><strong>Texas LCDC Program</strong><span>Official state information for Licensed Chemical Dependency Counselor pathways.</span><b>Review requirements ↗</b></a>
+        <a class="resource-card" href="https://avicennaallied.org/behavioral-health-technician/" target="_blank" rel="noopener"><strong>Avicenna Allied Health Institute</strong><span>One Houston-area Behavioral Health Technician certificate option.</span><b>Explore BHT training ↗</b></a>
+        <a class="resource-card" href="https://fullerlifefamilytherapy.org/our-training/" target="_blank" rel="noopener"><strong>Fuller Life Family Therapy Institute</strong><span>Houston-area training and professional development opportunities.</span><b>Explore training ↗</b></a>
+      </div>
+
+      <div class="callout">
+        <div>
+          <span class="eyebrow">WREDI opportunities</span>
+          <h3>Build experience and reduce barriers to entering the field.</h3>
+          <p>WREDI connects students and emerging professionals with workforce presentations, experiential learning, scholarships, and employment-focused opportunities.</p>
+        </div>
+        <div class="callout-links">
+          <a href="https://www.nbhp.org/externship2026.html" target="_blank" rel="noopener">Summer Externship ↗</a>
+          <a href="https://www.nbhp.org/scholarship.html" target="_blank" rel="noopener">Behavioral Health Scholarships ↗</a>
+          <a href="https://www.nbhp.org/internship-and-practicum-fair.html" target="_blank" rel="noopener">Internship & Practicum Fair ↗</a>
         </div>
       </div>
     </section>
 
-    <section id="plan">
-      <div class="wrap">
-        <div class="section-head"><div><span class="eyebrow">Plan your future</span><h2>Turn exploration into one next step.</h2><p>You do not need to map your whole career today. Capture what stands out, what you need to verify, and one action you can take next.</p></div></div>
-        <div class="plan-grid">
-          <div class="step"><span class="stepnum">1</span><h3>My top pathway</h3><p>Which role or roles do you want to explore further?</p><textarea id="plan1" placeholder="Example: Community Health Worker because…"></textarea></div>
-          <div class="step"><span class="stepnum">2</span><h3>What I need to verify</h3><p>List education, credential, experience, or employer requirements you still need to confirm.</p><textarea id="plan2" placeholder="Example: Current training or certification requirements…"></textarea></div>
-          <div class="step"><span class="stepnum">3</span><h3>My next action</h3><p>Choose one realistic action you can complete soon.</p><textarea id="plan3" placeholder="Example: Search three local job postings and compare requirements."></textarea></div>
+    <section class="section opportunities-section" id="opportunities">
+      <div class="section-heading">
+        <span class="eyebrow">Find training and employment opportunities</span>
+        <h2>Connect with Greater Houston behavioral health organizations.</h2>
+        <p>Use the NBHP Community Job Board for featured openings, or browse the current organization hiring pages below. This directory makes local opportunities easier to reach without favoring a single employer or training provider.</p>
+      </div>
+
+      <div class="opportunity-actions">
+        <a class="button primary" href="https://www.nbhp.org/job-board.html" target="_blank" rel="noopener">Open NBHP Community Job Board ↗</a>
+        <a class="button secondary" href="https://www.nbhp.org/member-organizations.html" target="_blank" rel="noopener">Explore NBHP member organizations ↗</a>
+      </div>
+
+      <div class="search-box">
+        <label for="orgSearch">Search organizations</label>
+        <input id="orgSearch" type="search" placeholder="Try Harris, recovery, hospital, family…" autocomplete="off">
+        <span id="orgCount" aria-live="polite"></span>
+      </div>
+      <div class="org-grid" id="orgGrid">
+        <a class="org-card" href="https://acamweb.org/" target="_blank" rel="noopener" data-name="alliance of community assistance ministries">
+        <span class="org-initial">AL</span>
+        <span class="org-name">Alliance of Community Assistance Ministries</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://jobs.uhsinc.com/behavioral-hospital-of-bellaire" target="_blank" rel="noopener" data-name="behavioral health hospital of bellaire">
+        <span class="org-initial">BE</span>
+        <span class="org-name">Behavioral Health Hospital of Bellaire</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="http://www.careerandrecovery.org/" target="_blank" rel="noopener" data-name="career and recovery resources, inc.">
+        <span class="org-initial">CA</span>
+        <span class="org-name">Career and Recovery Resources, Inc.</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://catholiccharities.org/about-us/jobs/" target="_blank" rel="noopener" data-name="catholic charities of the archdiocese of galveston-houston">
+        <span class="org-initial">CA</span>
+        <span class="org-name">Catholic Charities of the Archdiocese of Galveston-Houston</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.cenikor.org/careers/" target="_blank" rel="noopener" data-name="cenikor foundation">
+        <span class="org-initial">CE</span>
+        <span class="org-name">Cenikor Foundation</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.cishouston.org/employment" target="_blank" rel="noopener" data-name="communities in schools-houston">
+        <span class="org-initial">CO</span>
+        <span class="org-name">Communities In Schools-Houston</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://jobs.uhsinc.com/cypress-creek-hospital" target="_blank" rel="noopener" data-name="cypress creek hospital">
+        <span class="org-initial">CY</span>
+        <span class="org-name">Cypress Creek Hospital</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.depelchin.org/careers/" target="_blank" rel="noopener" data-name="depelchin children's center">
+        <span class="org-initial">DE</span>
+        <span class="org-name">DePelchin Children's Center</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.elcentrodecorazon.org/about-us/careers/" target="_blank" rel="noopener" data-name="el centro de corazón">
+        <span class="org-initial">EL</span>
+        <span class="org-name">El Centro de Corazón</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://familyhouston.org/careers/" target="_blank" rel="noopener" data-name="family houston">
+        <span class="org-initial">FA</span>
+        <span class="org-name">Family Houston</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="http://www.fortbendcouncil.org/" target="_blank" rel="noopener" data-name="fort bend regional council on substance abuse, inc.">
+        <span class="org-initial">FO</span>
+        <span class="org-name">Fort Bend Regional Council on Substance Abuse, Inc.</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.governmentjobs.com/careers/harriscountytx" target="_blank" rel="noopener" data-name="harris county resources for children and adults">
+        <span class="org-initial">HA</span>
+        <span class="org-name">Harris County Resources for Children and Adults</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://jobs.harrishealth.org/" target="_blank" rel="noopener" data-name="harris health system">
+        <span class="org-initial">HA</span>
+        <span class="org-name">Harris Health System</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://hgicounseling.org/about-us/jobs/" target="_blank" rel="noopener" data-name="houston galveston institute (hgi counseling)">
+        <span class="org-initial">HO</span>
+        <span class="org-name">Houston Galveston Institute (HGI Counseling)</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.houstontx.gov/hr/careers.html" target="_blank" rel="noopener" data-name="houston health department">
+        <span class="org-initial">HO</span>
+        <span class="org-name">Houston Health Department</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.houstonmethodistcareers.org/" target="_blank" rel="noopener" data-name="houston methodist">
+        <span class="org-initial">HO</span>
+        <span class="org-name">Houston Methodist</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://houstonrecoverycenter.org/careers/" target="_blank" rel="noopener" data-name="houston recovery center">
+        <span class="org-initial">HO</span>
+        <span class="org-name">Houston Recovery Center</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.alexanderjfs.org/careers" target="_blank" rel="noopener" data-name="jewish family service / alexander jfs">
+        <span class="org-initial">JE</span>
+        <span class="org-name">Jewish Family Service / Alexander JFS</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://jobs.uhsinc.com/kingwood-pines-hospital" target="_blank" rel="noopener" data-name="kingwood pines hospital">
+        <span class="org-initial">KI</span>
+        <span class="org-name">Kingwood Pines Hospital</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://mamhouston.wixsite.com/workatmam" target="_blank" rel="noopener" data-name="memorial assistance ministries">
+        <span class="org-initial">ME</span>
+        <span class="org-name">Memorial Assistance Ministries</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://mhahouston.org/careers/" target="_blank" rel="noopener" data-name="mental health america of greater houston">
+        <span class="org-initial">ME</span>
+        <span class="org-name">Mental Health America of Greater Houston</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://namigreaterhouston.org/" target="_blank" rel="noopener" data-name="nami greater houston">
+        <span class="org-initial">NA</span>
+        <span class="org-name">NAMI Greater Houston</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.namonline.org/careers" target="_blank" rel="noopener" data-name="northwest assistance ministries">
+        <span class="org-initial">NO</span>
+        <span class="org-name">Northwest Assistance Ministries</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.santamariahostel.org/about-us/career-opportunities/" target="_blank" rel="noopener" data-name="santa maria hostel, inc.">
+        <span class="org-initial">SA</span>
+        <span class="org-name">Santa Maria Hostel, Inc.</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.searchhomeless.org/work-for-search/" target="_blank" rel="noopener" data-name="search homeless services">
+        <span class="org-initial">SE</span>
+        <span class="org-name">SEARCH Homeless Services</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.uth.edu/careers/index.htm" target="_blank" rel="noopener" data-name="uthealth harris county psychiatric center">
+        <span class="org-initial">UT</span>
+        <span class="org-name">UTHealth Harris County Psychiatric Center</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.teenandfamilyservices.org/" target="_blank" rel="noopener" data-name="teen & family services">
+        <span class="org-initial">TE</span>
+        <span class="org-name">Teen & Family Services</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.councilonrecovery.org/careers-at-the-council/" target="_blank" rel="noopener" data-name="the council on recovery">
+        <span class="org-initial">TH</span>
+        <span class="org-name">The Council on Recovery</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.theharriscenter.org/careers" target="_blank" rel="noopener" data-name="the harris center for mental health and idd">
+        <span class="org-initial">TH</span>
+        <span class="org-name">The Harris Center for Mental Health and IDD</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.menningerclinic.com/" target="_blank" rel="noopener" data-name="the menninger clinic">
+        <span class="org-initial">TH</span>
+        <span class="org-name">The Menninger Clinic</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://montrosecenter.org/about/employment/" target="_blank" rel="noopener" data-name="the montrose center">
+        <span class="org-initial">TH</span>
+        <span class="org-name">The Montrose Center</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.thewomenshome.org/careers-internships/" target="_blank" rel="noopener" data-name="the women's home">
+        <span class="org-initial">TH</span>
+        <span class="org-name">The Women's Home</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.voatx.org/career-opportunities" target="_blank" rel="noopener" data-name="volunteers of america texas, inc.">
+        <span class="org-initial">VO</span>
+        <span class="org-name">Volunteers of America Texas, Inc.</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://jobs.uhsinc.com/west-oaks-hospital" target="_blank" rel="noopener" data-name="west oaks hospital">
+        <span class="org-initial">WE</span>
+        <span class="org-name">West Oaks Hospital</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.uh.edu/career-opportunities/" target="_blank" rel="noopener" data-name="uh family care center">
+        <span class="org-initial">UH</span>
+        <span class="org-name">UH Family Care Center</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://www.archwayacademy.org/" target="_blank" rel="noopener" data-name="archway academy">
+        <span class="org-initial">AR</span>
+        <span class="org-name">Archway Academy</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://ibnsinafoundation.org/careers" target="_blank" rel="noopener" data-name="ibn sina avicenna clinics">
+        <span class="org-initial">IB</span>
+        <span class="org-name">Ibn Sina Avicenna Clinics</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://lifeenhancement.bamboohr.com/careers" target="_blank" rel="noopener" data-name="life enhancement services of houston">
+        <span class="org-initial">LI</span>
+        <span class="org-name">Life Enhancement Services of Houston</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://fullerlifefamilytherapy.org/our-training/" target="_blank" rel="noopener" data-name="fuller life family therapy institute">
+        <span class="org-initial">FU</span>
+        <span class="org-name">Fuller Life Family Therapy Institute</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+<a class="org-card" href="https://innerwisdom.com/our-team/#careers" target="_blank" rel="noopener" data-name="inner wisdom">
+        <span class="org-initial">IN</span>
+        <span class="org-name">Inner Wisdom</span>
+        <span class="org-arrow" aria-hidden="true">↗</span>
+    </a>
+      </div>
+      <p class="source-note">Hiring links can change. If a link no longer works, use the NBHP Community Job Board or the organization's main website to locate current openings.</p>
+    </section>
+
+    <section class="section fit-section" id="fit">
+      <div class="section-heading">
+        <span class="eyebrow">Quick career matcher</span>
+        <h2>What kind of work sounds most like you?</h2>
+        <p>This is an exploration tool, not a test. Select every statement that feels true.</p>
+      </div>
+      <form id="matcherForm" class="matcher">
+        <label><input type="checkbox" value="community"> <span>I like helping people find services, solve practical barriers, and connect with community resources.</span></label>
+        <label><input type="checkbox" value="recovery"> <span>I am interested in recovery-oriented work built around hope, self-determination, and peer support.</span></label>
+        <label><input type="checkbox" value="clinical"> <span>I am interested in clinical counseling, assessment, treatment planning, and documentation.</span></label>
+        <label><input type="checkbox" value="direct"> <span>I prefer direct, hands-on support in structured care settings.</span></label>
+        <label><input type="checkbox" value="coordination"> <span>I enjoy coordinating services, teaching skills, tracking progress, and communicating across systems.</span></label>
+        <label><input type="checkbox" value="teamwork"> <span>I want a role where teamwork, observation, safety, and day-to-day support are central.</span></label>
+        <label><input type="checkbox" value="advanced"> <span>I am open to college or graduate education for a licensed or advanced professional role.</span></label>
+        <div class="matcher-actions">
+          <button class="button primary" type="submit">Show my matches</button>
+          <button class="button ghost" type="reset">Reset</button>
         </div>
-        <div class="actions"><button class="btn btn-secondary" type="button" onclick="window.print()">Print / Save My Plan</button><button class="btn btn-ghost" id="clearPlan" type="button">Clear saved plan</button></div>
+      </form>
+      <div id="matchResults" class="match-results" aria-live="polite">
+        <h3>Your pathway matches</h3>
+        <p>Select a few interests and choose <strong>Show my matches</strong>.</p>
       </div>
     </section>
 
-    <section id="resources" class="resources">
-      <div class="wrap">
-        <div class="section-head"><div><span class="eyebrow">Career tools</span><h2>Keep exploring</h2><p>The original course included these AAHI career and learning resources. They work well here as optional next-step tools.</p></div></div>
-        <div class="resource-grid">
-          <article class="resource"><h3>AAHI CareerConnect</h3><p>Search healthcare jobs, save opportunities, track applications, build your résumé, and connect with Career Services.</p><a class="btn btn-primary" href="https://aahi-careerconnect.onrender.com" target="_blank" rel="noopener">Open CareerConnect ↗</a></article>
-          <article class="resource"><h3>AAHI Allied Health Online Library</h3><p>Browse curated allied-health learning resources, clinical references, study tools, certification resources, videos, and career information.</p><a class="btn btn-secondary" href="https://aahi-allied-health-library.onrender.com" target="_blank" rel="noopener">Open Online Library ↗</a></article>
-          <article class="resource"><h3>Explore Avicenna Allied Health Institute</h3><p>If a behavioral health career feels like the right direction, explore Avicenna Allied Health Institute as one possible education and training option.</p><div class="actions"><a class="btn btn-secondary" href="https://avicennaallied.org/" target="_blank" rel="noopener">Visit Avicenna Allied Health Institute ↗</a><a class="btn btn-primary" href="https://avicennaallied.org/behavioral-health-technician/" target="_blank" rel="noopener">View the BHT Certificate Program ↗</a></div></article>
-          <article class="resource"><h3>Not sure where to begin?</h3><p>Use the career matcher above, open the Articulate career lesson in any pathway card, and compare the role with your interests before choosing a training path.</p><a class="btn btn-ghost" href="#fit">Return to Find Your Fit ↑</a></article>
-        </div>
-        <div class="note" style="margin-top:24px"><strong>Requirements change.</strong> Career titles, education, certification, licensure, lived-experience criteria, and employer expectations vary by role and location. Use this site to explore, then verify current requirements with the appropriate credentialing body, employer, or state agency before making a decision.</div>
+    <section class="section plan-section" id="plan">
+      <div class="section-heading">
+        <span class="eyebrow">Plan your future</span>
+        <h2>Turn exploration into one next step.</h2>
+        <p>You do not have to map your whole career today. Capture what stands out and identify one practical next action.</p>
+      </div>
+      <div class="plan-grid">
+        <label><span>1. My top pathway</span><textarea id="planPathway" rows="4" placeholder="Which role or roles do you want to explore further?"></textarea></label>
+        <label><span>2. What I need to verify</span><textarea id="planVerify" rows="4" placeholder="Education, credential, experience, employer, cost, schedule…"></textarea></label>
+        <label><span>3. My next action</span><textarea id="planAction" rows="4" placeholder="Choose one realistic action you can complete soon."></textarea></label>
+      </div>
+      <div class="plan-actions">
+        <button class="button primary" id="printPlan" type="button">Print / Save My Plan</button>
+        <button class="button ghost" id="clearPlan" type="button">Clear saved plan</button>
+        <span id="saveStatus" class="save-status" aria-live="polite"></span>
+      </div>
+      <p class="privacy-note">Your plan is saved only in this browser on this device. It is not sent to NBHP, WREDI, or another organization.</p>
+    </section>
+
+    <section class="section resource-section" id="resources">
+      <div class="section-heading">
+        <span class="eyebrow">Community resources</span>
+        <h2>Keep exploring.</h2>
+        <p>These resources are offered as different starting points. No single provider is presented as the default pathway.</p>
+      </div>
+      <div class="resource-grid">
+        <a class="resource-card" href="https://www.nbhp.org/wredi.html" target="_blank" rel="noopener"><strong>WREDI</strong><span>Learn about NBHP's behavioral health workforce initiative.</span><b>Visit WREDI ↗</b></a>
+        <a class="resource-card" href="https://www.nbhp.org/job-board.html" target="_blank" rel="noopener"><strong>NBHP Community Job Board</strong><span>Featured behavioral health jobs and employer hiring pages.</span><b>Browse jobs ↗</b></a>
+        <a class="resource-card" href="https://www.nbhp.org/training-opportunities.html" target="_blank" rel="noopener"><strong>NBHP Training Opportunities</strong><span>Browse current community training opportunities.</span><b>Browse training ↗</b></a>
+        <a class="resource-card" href="https://aahi-careerconnect.onrender.com/" target="_blank" rel="noopener"><strong>AAHI CareerConnect</strong><span>One community career-planning tool for job search, résumé building, and application tracking.</span><b>Open CareerConnect ↗</b></a>
+        <a class="resource-card" href="https://aahi-allied-health-library.onrender.com/" target="_blank" rel="noopener"><strong>AAHI Allied Health Online Library</strong><span>One collection of allied-health learning, certification, and career resources.</span><b>Open library ↗</b></a>
+        <a class="resource-card" href="https://www.samhsa.gov/about/careers/behavioral-health-workforce/careers-by-state?field_bwc_state_value=Texas" target="_blank" rel="noopener"><strong>SAMHSA Texas Career Requirements</strong><span>Explore behavioral-health career credential information by profession in Texas.</span><b>Explore Texas careers ↗</b></a>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <img src="assets/nbhp-logo.png" alt="Network of Behavioral Health Providers">
+      <div>
+        <span class="eyebrow">A community workforce resource</span>
+        <h2>Choose a path. Learn what it takes. Take one next step.</h2>
+        <p>Career titles, salaries, education, certification, licensure, lived-experience criteria, and employer expectations change. Use this Launchpad to explore, then verify current requirements with the appropriate credentialing body, school, employer, or state agency.</p>
       </div>
     </section>
   </main>
 
-  <footer><div class="wrap">Workforce Recruitment Education and Development Initiative • Behavioral Health Careers Launchpad</div></footer>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>Behavioral Health Careers Launchpad</strong>
+        <p>Workforce Recruitment, Education, and Development Initiative (WREDI) • Network of Behavioral Health Providers (NBHP)</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.nbhp.org/" target="_blank" rel="noopener">NBHP ↗</a>
+        <a href="https://www.nbhp.org/wredi.html" target="_blank" rel="noopener">WREDI ↗</a>
+        <a href="https://www.nbhp.org/job-board.html" target="_blank" rel="noopener">Job Board ↗</a>
+      </div>
+    </div>
+  </footer>
 
-  <script>
-    const names={
-      chw:'Community Health Worker', mh:'Mental Health Peer Specialist', rs:'Recovery Support Peer Specialist',
-      lcdc:'Substance Use Counselor — LCDC', pt:'Psychiatric Technician', qmhp:'Qualified Mental Health Professional — QMHP', bht:'Behavioral Health Technician'
-    };
-    const blurb={
-      chw:'Community outreach, health education, referrals, advocacy, and resource navigation.',
-      mh:'Recovery-oriented peer support, hope, self-determination, and strengths.',
-      rs:'Substance use recovery support, lived experience, encouragement, and community connection.',
-      lcdc:'Clinical substance use counseling, assessment, treatment planning, and documentation.',
-      pt:'Hands-on direct care, observation, safety, structured activities, and teamwork.',
-      qmhp:'Case management, skills training, rehabilitation, crisis support, and service coordination.',
-      bht:'Direct behavioral-health support, observation, documentation, safety, and team-based care.'
-    };
-    document.getElementById('matchBtn').addEventListener('click',()=>{
-      const score={chw:0,mh:0,rs:0,lcdc:0,pt:0,qmhp:0,bht:0};
-      document.querySelectorAll('#quizbox input:checked').forEach(cb=>cb.dataset.tags.split(',').forEach(t=>score[t]++));
-      const chosen=document.querySelectorAll('#quizbox input:checked').length;
-      const box=document.getElementById('matches'); box.innerHTML='';
-      if(!chosen){document.getElementById('resultIntro').textContent='Choose at least one statement first.';return;}
-      const ranked=Object.entries(score).sort((a,b)=>b[1]-a[1]).filter(x=>x[1]>0).slice(0,3);
-      document.getElementById('resultIntro').textContent='These pathways share the most themes with your selections:';
-      ranked.forEach(([key,val],i)=>{const d=document.createElement('div');d.className='match';d.innerHTML=`<strong>${i+1}. ${names[key]}</strong><div>${blurb[key]}</div>`;box.appendChild(d)});
-    });
-    document.getElementById('resetBtn').addEventListener('click',()=>{document.querySelectorAll('#quizbox input').forEach(x=>x.checked=false);document.getElementById('matches').innerHTML='';document.getElementById('resultIntro').innerHTML='Choose a few statements and select <strong>Show my matches</strong>.'});
-    ['plan1','plan2','plan3'].forEach(id=>{const el=document.getElementById(id);el.value=localStorage.getItem(id)||'';el.addEventListener('input',()=>localStorage.setItem(id,el.value));});
-    document.getElementById('clearPlan').addEventListener('click',()=>{['plan1','plan2','plan3'].forEach(id=>{localStorage.removeItem(id);document.getElementById(id).value='';});});
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>

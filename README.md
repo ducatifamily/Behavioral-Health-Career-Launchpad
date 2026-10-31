@@ -1,36 +1,55 @@
-# Behavioral Health Careers Launchpad — Simple Career Explorer
+# Behavioral Health Careers Launchpad — NBHP + WREDI
 
-This version is intentionally **not a course**. It is a lightweight career-exploration microsite based on the content and career pathways in the original Canvas export.
+Static GitHub/Render site revised from the original Behavioral Health Careers Launchpad.
+
+## What changed
+
+- Reframed the site clearly as an **NBHP + WREDI community workforce resource**.
+- Added the supplied **WREDI** and **NBHP** logos.
+- Added current WREDI workforce-shortage context using the current NBHP/WREDI source.
+- Clarified that the seven highlighted careers are examples of high-demand regional pathways, not the complete behavioral-health field.
+- Added **advanced career pathways** (counseling/therapy, social work, psychology, psychiatric nursing, psychiatry).
+- Added a **career comparison table** with 2025 BLS national median pay and 2025–2035 projected growth for selected comparable occupations.
+- Added a neutral **Houston/Texas college and university** directory.
+- Added official credential/training gateways and community training options.
+- Added WREDI **externship, scholarship, internship/practicum** links.
+- Replaced the AAHI-centered career-tools presentation with a neutral **community resources** area where AAHI/Avicenna are options among several resources.
+- Added a searchable directory of the **current hiring pages supplied by Lisa Albert**.
+- Preserved and expanded the **career matcher** and **next-step plan**.
+- No database or API is required. The career plan is stored only in the visitor's browser.
 
 ## Files
 
-- `index.html` — the entire site (HTML, CSS, and JavaScript)
-- `launchpad-hero.png` — WREDI launchpad artwork
-- `render.yaml` — Render static-site configuration
-- `README.md` — these instructions
-
-## Important: GitHub upload
-
-**Unzip the downloaded package first. Do not upload the ZIP file itself to GitHub.**
-
-Create or open the GitHub repository, choose **Add file → Upload files**, and upload these four files from inside the unzipped folder. Each file is small enough for GitHub's browser uploader.
+- `index.html`
+- `styles.css`
+- `app.js`
+- `render.yaml`
+- `assets/wredi-logo.png`
+- `assets/nbhp-logo.png`
 
 ## Deploy on Render
 
-1. Push/upload these files to the root of the GitHub repository.
-2. In Render, create a new Blueprint or Static Site connected to that repository.
-3. Render can use the included `render.yaml`.
-4. There is no build step; the publish path is the repository root.
+1. Create or update a GitHub repository.
+2. Put all files in the repository root exactly as shown above.
+3. Connect the GitHub repository to Render.
+4. Render can read `render.yaml` and deploy the project as a static site.
 
-## Design approach
+If replacing an existing Render site tied to GitHub, replace the old repository files with these and commit/push. Render should redeploy automatically if auto-deploy is enabled.
 
-The site removes LMS/course behaviors such as modules, grades, assignment submissions, discussion boards, and required progress. It keeps the career-exploration purpose and presents it as:
+## Maintenance notes
 
-- Explore Careers
-- Support Recovery
-- Strengthen Communities
-- Plan Your Future
-- Seven career pathway cards
-- A lightweight career-interest matcher
-- A browser-saved next-step plan
-- Links to AAHI CareerConnect and the AAHI Allied Health Online Library
+### Member organization links
+The searchable employer directory is intentionally data-light: organization name + hiring link. If a hiring URL changes, edit the corresponding `<a class="org-card">` entry in `index.html`.
+
+### Adding member logos later
+Member logos were **not** added because only NBHP and WREDI logo files were supplied. The organization cards are already structured so logos can be added later without redesigning the page.
+
+### Workforce statistics
+Current homepage statistics link back to:
+- https://www.nbhp.org/wredi.html
+
+### Salary / outlook figures
+Comparison data link directly to the current U.S. Bureau of Labor Statistics Occupational Outlook Handbook pages. These figures are national, not Houston-specific.
+
+### Neutrality
+The site deliberately presents Avicenna/AAHI as options among many community resources rather than as the default pathway.
