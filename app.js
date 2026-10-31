@@ -107,4 +107,22 @@
     });
     if (saveStatus) saveStatus.textContent = 'Saved plan cleared';
   });
+
+  // Training and certification filters
+  const trainingButtons = [...document.querySelectorAll('[data-training-filter]')];
+  const trainingCards = [...document.querySelectorAll('.training-card')];
+
+  if (trainingButtons.length && trainingCards.length) {
+    trainingButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.trainingFilter;
+        trainingButtons.forEach(b => b.classList.toggle('active', b === button));
+        trainingCards.forEach(card => {
+          const categories = (card.dataset.trainingCategory || '').split(/\s+/);
+          card.hidden = filter !== 'all' && !categories.includes(filter);
+        });
+      });
+    });
+  }
+
 })();

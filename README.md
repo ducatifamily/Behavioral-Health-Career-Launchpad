@@ -57,3 +57,13 @@ The site deliberately presents Avicenna/AAHI as options among many community res
 
 ## Logo path fix
 The two PNG logo files are intentionally stored in the repository root beside `index.html`. This avoids missing-folder issues when files are uploaded to GitHub manually.
+
+
+## Final refinements included
+
+- Removed the provider-specific Avicenna link from the BHT career card; the BHT card now sends visitors to the neutral training directory.
+- Added a community-facing **Start Where You Are** section for visitors who want to work sooner, build experience first, or pursue an advanced career.
+- Added a true side-by-side comparison of all seven highlighted pathways.
+- Retained the separate BLS workforce snapshot for salary and outlook context.
+- Expanded training into a filterable **Find Training & Certification** directory so Avicenna appears as one option among multiple public, credentialing, community, and professional resources.
+- The same GitHub repository and Render service can be used; replace the existing files with this package and commit.

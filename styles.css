@@ -261,3 +261,82 @@ footer { border-top: 1px solid var(--line); background: #102b46; color: #e8f3f6;
   .plan-grid label { margin-bottom: 24px; }
   textarea { min-height: 120px; border: 1px solid #999 !important; }
 }
+
+
+/* Final refinement additions */
+.access-section {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.access-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  background: #fff;
+}
+.access-number {
+  display: inline-grid;
+  place-items: center;
+  min-width: 38px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--pale-blue);
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+.access-card h3 { margin-bottom: 8px; }
+.access-card p { color: var(--muted); }
+.access-card a { font-weight: 800; font-size: 13px; }
+
+.pathway-compare-wrap { margin-bottom: 42px; }
+.pathway-compare th:first-child, .pathway-compare td:first-child { min-width: 190px; }
+.workforce-heading { margin-top: 42px; }
+.workforce-heading h3 {
+  font-size: clamp(25px, 3vw, 34px);
+  margin-bottom: 10px;
+}
+
+.training-directory { scroll-margin-top: 92px; }
+.training-intro {
+  max-width: 860px;
+  color: var(--muted);
+  font-size: 16px;
+  margin: -6px 0 18px;
+}
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 0 0 20px;
+}
+.filter-button {
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.filter-button:hover { border-color: #9ec6d7; }
+.filter-button.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.training-card[hidden] { display: none !important; }
+
+@media (max-width: 700px) {
+  .access-grid { grid-template-columns: 1fr; }
+}
